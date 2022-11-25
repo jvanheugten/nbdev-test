@@ -1,0 +1,27 @@
+# Create SSH Key
+Create a SSH key
+```sh
+ssh-keygen -t ed25519 -C "your_email@example.com"
+```
+
+## Mac:
+Run the ssh-agent
+```sh 
+eval (ssh-agent -c)
+```
+
+Add the private key to your ssh-agent
+```sh
+ssh-add --apple-use-keychain <private key file>
+```
+
+Set all hosts to use the keychain
+```
+Host *
+  UseKeychain yes
+  AddKeysToAgent yes
+  IdentityFile ~/.ssh/id_rsa
+```
+
+## References
+https://apple.stackexchange.com/questions/48502/how-can-i-permanently-add-my-ssh-private-key-to-keychain-so-it-is-automatically
